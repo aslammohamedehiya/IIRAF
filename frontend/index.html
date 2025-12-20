@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Triage & Auto-Resolution</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">Incident Triage & Auto-Resolution</div>
+        <div class="nav-user">
+            <span>Aslam Ehiya (Admin)</span>
+            <div class="avatar">AE</div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <label>Issue Description / Symptom</label>
+            <div class="search-bar">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="search-input" placeholder="e.g., Payment Gateway 500 errors...">
+                <button class="analyze-btn" onclick="performAnalysis()">Analyze</button>
+            </div>
+        </div>
+
+        <div class="content-grid">
+
+            <!-- LEFT COLUMN -->
+            <div class="left-panel">
+
+                <!-- Recommended Solution -->
+                <div class="card solution-card">
+                    <div class="card-header blue-header">
+                        <i data-lucide="wand-2"></i> Recommended Solution (AI Generated)
+                    </div>
+                    <div class="card-body">
+                        <p class="summary-text">Based on <strong id="inc-count">3 similar incidents</strong> and <strong
+                                id="kb-count">2 KB articles</strong>, here is the recommended resolution path:</p>
+                        <ul class="steps-list" id="resolution-steps">
+                            <!-- Populated by JS -->
+                            <li>Step 1: Verify API Rate Limits. Past incidents indicate high traffic triggers 500s.</li>
+                            <li>Step 2: Check Pod Health. Use <code>kubectl get pods</code> to identify crash loops.
+                            </li>
+                            <li>Step 3: If pods are unhealthy, perform rolling restart (See Auto-Heal panel).</li>
+                        </ul>
+                        <div class="tags" id="solution-tags">
+                            <span class="tag">INC-4920</span>
+                            <span class="tag">KB-102</span>
+                            <span class="tag">INC-3310</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supporting Evidence -->
+                <div class="section-title-row">
+                    <span>SUPPORTING EVIDENCE</span>
+                    <span>RELEVANCE</span>
+                </div>
+
+                <div id="evidence-list">
+                    <!-- Evidence Items -->
+                </div>
+
+                <!-- Fallback / Create Incident -->
+                <div class="card fallback-card">
+                    <h3>Resolution Not Found?</h3>
+                    <p>If the AI recommendations and patterns do not resolve the issue, create a formal incident ticket
+                        for L3 support.</p>
+                    <button class="create-inc-btn">+ Create New Incident</button>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-panel">
+
+                <!-- KB Articles Section -->
+                <div class="card kb-card">
+                    <div class="kb-header">
+                        <i data-lucide="book-open"></i> Knowledge Base Articles
+                    </div>
+                    <div class="kb-body" id="kb-articles-list">
+                        <!-- KB Articles will be populated here by JS -->
+                    </div>
+                </div>
+
+                <!-- Pattern Detected -->
+                <div class="card pattern-card hidden" id="pattern-panel">
+                    <div class="pattern-header-text">
+                        <i data-lucide="alert-triangle"></i> Pattern Detected
+                    </div>
+                    <div class="pattern-box">
+                        <p><strong>Pattern <span id="pattern-id">P002</span> identified.</strong></p>
+                        <p id="pattern-desc">This matches a known recurring issue: "Payment Gateway Timeout Cluster B".
+                        </p>
+                    </div>
+                    <p class="pattern-meta">Frequency: <strong id="pattern-freq">45 times</strong> in last 30 days.</p>
+                </div>
+
+                <!-- Auto-Heal -->
+                <div class="card autoheal-card hidden" id="autoheal-panel">
+                    <div class="autoheal-header-text">
+                        <i data-lucide="bot"></i> Auto-Heal Available
+                    </div>
+                    <p>A validated script exists to resolve this pattern.</p>
+                    <div class="code-block" id="heal-script">./restart_svc.sh -n payment -r us-east</div>
+                    <button class="remediation-btn" onclick="runRemediation()">
+                        <i data-lucide="play"></i> Run Remediation
+                    </button>
+                    <div id="remediation-status" class="status-msg"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

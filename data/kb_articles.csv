@@ -1,0 +1,401 @@
+kb_id,application,title,content,tags,created_at
+KB0001,Inventory,How to resolve missing reference data in Inventory,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0002,Billing,How to resolve stale cache entry after deployment in Billing,"Step 1: Verify logs and confirm occurrence of stale cache entry after deployment.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0003,Inventory,How to resolve null value in database column in Inventory,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0004,Analytics,How to resolve permission misconfiguration in Analytics,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0005,OrderMgmt,How to resolve stale cache entry after deployment in OrderMgmt,"Step 1: Verify logs and confirm occurrence of stale cache entry after deployment.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0006,Billing,How to resolve missing reference data in Billing,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0007,Shipping,How to resolve permission misconfiguration in Shipping,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0008,Payments,How to resolve stale cache entry after deployment in Payments,"Step 1: Verify logs and confirm occurrence of stale cache entry after deployment.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0009,CRM,How to resolve downstream api timeout in CRM,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0010,Analytics,How to resolve downstream api timeout in Analytics,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0011,CRM,How to resolve downstream api timeout in CRM,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0012,CRM,How to resolve schema mismatch in payload in CRM,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0013,CRM,How to resolve null value in database column in CRM,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0014,OrderMgmt,How to resolve schema mismatch in payload in OrderMgmt,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0015,OrderMgmt,How to resolve schema mismatch in payload in OrderMgmt,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0016,CRM,How to resolve null value in database column in CRM,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0017,Login,How to resolve network latency spike in Login,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","login,incident,root-cause,remediation",2024-01-01
+KB0018,CRM,How to resolve null value in database column in CRM,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0019,Payments,How to resolve downstream api timeout in Payments,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0020,OrderMgmt,How to resolve schema mismatch in payload in OrderMgmt,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0021,Billing,How to resolve incorrect configuration parameter in Billing,"Step 1: Verify logs and confirm occurrence of incorrect configuration parameter.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0022,CRM,How to resolve schema mismatch in payload in CRM,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0023,Billing,How to resolve null value in database column in Billing,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0024,Inventory,How to resolve missing reference data in Inventory,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0025,Payments,How to resolve missing reference data in Payments,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0026,Billing,How to resolve schema mismatch in payload in Billing,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0027,Billing,How to resolve missing reference data in Billing,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0028,Inventory,How to resolve network latency spike in Inventory,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0029,Payments,How to resolve null value in database column in Payments,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0030,Payments,How to resolve permission misconfiguration in Payments,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0031,Shipping,How to resolve stale cache entry after deployment in Shipping,"Step 1: Verify logs and confirm occurrence of stale cache entry after deployment.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0032,Inventory,How to resolve schema mismatch in payload in Inventory,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0033,Inventory,How to resolve incorrect configuration parameter in Inventory,"Step 1: Verify logs and confirm occurrence of incorrect configuration parameter.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0034,Inventory,How to resolve permission misconfiguration in Inventory,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0035,CRM,How to resolve incorrect configuration parameter in CRM,"Step 1: Verify logs and confirm occurrence of incorrect configuration parameter.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0036,Shipping,How to resolve missing reference data in Shipping,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0037,Shipping,How to resolve missing reference data in Shipping,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0038,Analytics,How to resolve network latency spike in Analytics,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0039,Analytics,How to resolve schema mismatch in payload in Analytics,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – corrected payload schema and redeployed integration.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0040,Billing,How to resolve network latency spike in Billing,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0041,Analytics,How to resolve network latency spike in Analytics,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0042,Shipping,How to resolve missing reference data in Shipping,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0043,Analytics,How to resolve missing reference data in Analytics,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0044,Billing,How to resolve downstream api timeout in Billing,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0045,OrderMgmt,How to resolve permission misconfiguration in OrderMgmt,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0046,CRM,How to resolve permission misconfiguration in CRM,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0047,Payments,How to resolve incorrect configuration parameter in Payments,"Step 1: Verify logs and confirm occurrence of incorrect configuration parameter.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0048,CRM,How to resolve network latency spike in CRM,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0049,Login,How to resolve incorrect configuration parameter in Login,"Step 1: Verify logs and confirm occurrence of incorrect configuration parameter.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","login,incident,root-cause,remediation",2024-01-01
+KB0050,Payments,How to resolve permission misconfiguration in Payments,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0051,Login,How to resolve schema mismatch in payload in Login,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","login,incident,root-cause,remediation",2024-01-01
+KB0052,Billing,How to resolve schema mismatch in payload in Billing,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0053,Shipping,How to resolve schema mismatch in payload in Shipping,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0054,CRM,How to resolve missing reference data in CRM,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0055,CRM,How to resolve permission misconfiguration in CRM,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0056,Inventory,How to resolve network latency spike in Inventory,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0057,OrderMgmt,How to resolve schema mismatch in payload in OrderMgmt,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – corrected payload schema and redeployed integration.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0058,OrderMgmt,How to resolve null value in database column in OrderMgmt,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0059,CRM,How to resolve permission misconfiguration in CRM,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – applied configuration fix and redeployed service.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0060,Login,How to resolve missing reference data in Login,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","login,incident,root-cause,remediation",2024-01-01
+KB0061,CRM,How to resolve schema mismatch in payload in CRM,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0062,Payments,How to resolve network latency spike in Payments,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0063,Analytics,How to resolve network latency spike in Analytics,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0064,CRM,How to resolve null value in database column in CRM,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – cleared distributed cache and forced cache rebuild.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0065,Billing,How to resolve missing reference data in Billing,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01
+KB0066,Inventory,How to resolve missing reference data in Inventory,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – corrected payload schema and redeployed integration.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0067,CRM,How to resolve schema mismatch in payload in CRM,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0068,OrderMgmt,How to resolve null value in database column in OrderMgmt,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0069,Shipping,How to resolve null value in database column in Shipping,"Step 1: Verify logs and confirm occurrence of null value in database column.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","shipping,incident,root-cause,remediation",2024-01-01
+KB0070,Analytics,How to resolve stale cache entry after deployment in Analytics,"Step 1: Verify logs and confirm occurrence of stale cache entry after deployment.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – corrected payload schema and redeployed integration.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0071,OrderMgmt,How to resolve schema mismatch in payload in OrderMgmt,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0072,Analytics,How to resolve schema mismatch in payload in Analytics,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – granted missing role permissions to affected users.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0073,CRM,How to resolve permission misconfiguration in CRM,"Step 1: Verify logs and confirm occurrence of permission misconfiguration.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","crm,incident,root-cause,remediation",2024-01-01
+KB0074,Payments,How to resolve downstream api timeout in Payments,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","payments,incident,root-cause,remediation",2024-01-01
+KB0075,OrderMgmt,How to resolve network latency spike in OrderMgmt,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","ordermgmt,incident,root-cause,remediation",2024-01-01
+KB0076,Inventory,How to resolve downstream api timeout in Inventory,"Step 1: Verify logs and confirm occurrence of downstream api timeout.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – updated missing database records using corrective sql script.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0077,Inventory,How to resolve network latency spike in Inventory,"Step 1: Verify logs and confirm occurrence of network latency spike.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – corrected payload schema and redeployed integration.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","inventory,incident,root-cause,remediation",2024-01-01
+KB0078,Login,How to resolve missing reference data in Login,"Step 1: Verify logs and confirm occurrence of missing reference data.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – restarted affected microservice and validated health checks.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","login,incident,root-cause,remediation",2024-01-01
+KB0079,Analytics,How to resolve schema mismatch in payload in Analytics,"Step 1: Verify logs and confirm occurrence of schema mismatch in payload.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – retried failed api calls with increased timeout.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","analytics,incident,root-cause,remediation",2024-01-01
+KB0080,Billing,How to resolve stale cache entry after deployment in Billing,"Step 1: Verify logs and confirm occurrence of stale cache entry after deployment.
+Step 2: Identify impacted components and affected transactions.
+Step 3: Apply remediation – reprocessed failed data through batch job.
+Step 4: Validate system behavior and monitor for recurrence.
+Step 5: Document findings and close the incident.","billing,incident,root-cause,remediation",2024-01-01

@@ -1,0 +1,13 @@
+
+pandas
+numpy
+sentence-transformers
+faiss-cpu
+scikit-learn
+hdbscan
+umap-learn
+xgboost
+fastapi
+uvicorn
+google-generativeai
+python-dotenv

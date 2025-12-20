@@ -1,0 +1,1 @@
+React frontend skeleton – integrate with FastAPI backend
