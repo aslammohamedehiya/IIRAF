@@ -1,0 +1,1613 @@
+
+--- Page 1 ---
+ 
+An AI-Driv en Self-Service Tool for Inciden t Triaging & Prevention  Cour se No. : AIML CZG628T   Cour se Title: Dissert ation  Dissert ation Done by:   Studen t Name: Aslam Mohamed Ehiya  BITS ID: 2023A C05247   Degr ee Program:  M.Tech. in Artificial Intelligence & Machine Learning  Resear ch Area: Artificial Intelligence  Dissert ation / Project Work carried out at: Verizon, Chennai   
+ BIRLA INSTITUTE OF TECHNOL OGY & SCIENCE, PILANI  VIDYA VIHAR, PILANI, RAJASTHAN - 333031.    (Nov 2025) 
+ 
+
+--- Page 2 ---
+ 
+Contents 
+ 
+1.
+ 
+Broad
+ 
+Area
+ 
+of
+ 
+Work
+ 
+3 
+2.
+ 
+Backgr ound
+ 
+3 
+3.
+ 
+Objectiv es
+ 
+3 
+4.
+ 
+Scope
+ 
+of
+ 
+Work
+ 
+4 
+5.
+ 
+Plan
+ 
+of
+ 
+Work
+ 
+4 
+6.
+ 
+Literature
+ 
+References
+ 
+5 
+7.
+ 
+Particular s
+ 
+of
+ 
+the
+ 
+Super visor
+ 
+and
+ 
+Examiner
+ 
+6 
+8.
+ 
+Remark s
+ 
+of
+ 
+the
+ 
+Super visor
+ 
+6   
+ 
+--- Page 3 ---
+ 
+1.
+ 
+Broad
+ 
+Area
+ 
+of
+ 
+Work
+ This project is situa ted in the broad area of Applied Artificial Intelligence and AIOp s (AI 
+for
+ 
+IT
+ 
+Oper ations).
+ 
+It
+ 
+involves
+ 
+the
+ 
+practic al
+ 
+applic ation
+ 
+of
+ 
+several
+ 
+key
+ 
+resear ch
+ 
+fields
+ 
+to
+ 
+solve
+ 
+a
+ 
+signific ant
+ 
+enterprise-le vel
+ 
+problem:
+ 
+●
+ 
+Natural
+ 
+Languag e
+ 
+Processing
+ 
+(NLP):
+ 
+To
+ 
+under stand
+ 
+user -report ed
+ 
+issues
+ 
+from
+ 
+chat
+ 
+logs
+ 
+and
+ 
+inciden t
+ 
+tickets
+ 
+and
+ 
+to
+ 
+perform
+ 
+seman tic
+ 
+matching.
+ 
+●
+ 
+Vector
+ 
+Sear ch
+ 
+&
+ 
+Informa tion
+ 
+Retrieval:
+ 
+To
+ 
+build
+ 
+a
+ 
+high-speed
+ 
+"seman tic
+ 
+sear ch"
+ 
+engine
+ 
+that
+ 
+finds
+ 
+similar
+ 
+historical
+ 
+solutions
+ 
+from
+ 
+a
+ 
+large
+ 
+dataset.
+ 
+●
+ 
+Machine
+ 
+Learning
+ 
+(Clus tering
+ 
+&
+ 
+Classific ation):
+ 
+To
+ 
+analy ze
+ 
+inciden t
+ 
+data,
+ 
+automa tically
+ 
+detect
+ 
+recurring
+ 
+patterns,
+ 
+and
+ 
+classif y
+ 
+issues.
+ 
+2.
+ 
+Backgr ound
+ In man y large-scale organizations like Verizon, IT support and customer service teams 
+are
+ 
+a
+ 
+critic al
+ 
+function.
+ 
+However,
+ 
+they
+ 
+are
+ 
+often
+ 
+overwhelmed
+ 
+by
+ 
+a
+ 
+high
+ 
+volume
+ 
+of
+ 
+repetitive
+ 
+inciden ts.
+ 
+A
+ 
+large
+ 
+percentage
+ 
+of
+ 
+support
+ 
+tickets
+ 
+are
+ 
+for
+ 
+known
+ 
+issues
+ 
+that
+ 
+have
+ 
+been
+ 
+solved
+ 
+before.
+ 
+The
+ 
+"tribal
+ 
+knowledg e"
+ 
+requir ed
+ 
+to
+ 
+solve
+ 
+these
+ 
+issues
+ 
+is
+ 
+often
+ 
+lost
+ 
+in
+ 
+historical
+ 
+inciden t
+ 
+logs,
+ 
+old
+ 
+chat
+ 
+transcrip ts,
+ 
+or
+ 
+dispar ate
+ 
+Knowledg e
+ 
+Base
+ 
+(KB)
+ 
+articles.
+ 
+This
+ 
+leads
+ 
+to
+ 
+high
+ 
+Mean
+ 
+Time
+ 
+To
+ 
+Resolution
+ 
+(MTTR),
+ 
+frustrated
+ 
+user s,
+ 
+and
+ 
+inefficien t
+ 
+support
+ 
+teams.
+ The relevance of this project to the studen t's work environmen t (Verizon) is the direct 
+applic ation
+ 
+of
+ 
+AI
+ 
+to
+ 
+optimiz e
+ 
+this
+ 
+exact
+ 
+process.
+ 
+The
+ 
+proposed
+ 
+solution
+ 
+is
+ 
+a
+ 
+Proof
+ 
+of
+ 
+Concep t
+ 
+(PoC)
+ 
+for
+ 
+an
+ 
+"Intellig ent
+ 
+Inciden t
+ 
+Resolution
+ 
+&
+ 
+Autoheal
+ 
+Frame work"
+ 
+(IIRAF)
+,
+ 
+which
+ 
+will
+ 
+serve
+ 
+as
+ 
+the
+ 
+AI-driv en
+ 
+self-service
+ 
+tool.
+ 
+By
+ 
+integrating
+ 
+with
+ 
+existing
+ 
+ticketing
+ 
+systems,
+ 
+the
+ 
+IIRAF
+ 
+frame work
+ 
+can
+ 
+act
+ 
+as
+ 
+an
+ 
+intelligent
+ 
+layer.
+ 
+It
+ 
+will
+ 
+use
+ 
+the
+ 
+provided
+ 
+synthetic
+ 
+dataset
+ 
+(which
+ 
+mirr ors
+ 
+real-w orld
+ 
+inciden t
+ 
+data)
+ 
+to
+ 
+build
+ 
+a
+ 
+system
+ 
+that
+ 
+can
+ 
+proactiv ely
+ 
+assis t
+ 
+support
+ 
+agents,
+ 
+automa te
+ 
+resolutions
+ 
+for
+ 
+common
+ 
+patterns,
+ 
+and
+ 
+create
+ 
+a
+ 
+"self -healing"
+ 
+system
+ 
+that
+ 
+continuously
+ 
+learns,
+ 
+thereby
+ 
+directly
+ 
+addr essing
+ 
+these
+ 
+key
+ 
+business
+ 
+inefficiencies.
+ 
+3.
+ 
+Objectiv es
+ The primar y objectiv e is to design, develop, and valida te a Proof of Concep t (PoC) for 
+the
+ 
+AI-driv en
+ 
+self-service
+ 
+tool,
+ 
+referred
+ 
+to
+ 
+as
+ 
+the
+ 
+Intelligent
+ 
+Inciden t
+ 
+Resolution
+ 
+&
+ 
+Autoheal
+ 
+Frame work
+ 
+(IIRAF).
+ The specific objectiv es are: 
+1.
+ 
+To
+ 
+design
+ 
+the
+ 
+comple te
+ 
+architectur e
+ 
+for
+ 
+an
+ 
+end-t o-end
+ 
+inciden t
+ 
+resolution
+ 
+frame work,
+ 
+including
+ 
+data
+ 
+ingestion,
+ 
+seman tic
+ 
+sear ch,
+ 
+pattern
+ 
+detection,
+ 
+and
+ 
+an
+ 
+auto-heal
+ 
+execution
+ 
+module.
+ 
+2.
+ 
+To
+ 
+implemen t
+ 
+a
+ 
+seman tic
+ 
+sear ch
+ 
+engine
+ 
+using
+ 
+NLP
+ 
+(Sen tenceT ransformer s)
+ 
+and
+ 
+a
+ 
+vector
+ 
+database
+ 
+(FAISS)
+ 
+to
+ 
+match
+ 
+new
+ 
+issues
+ 
+against
+ 
+historical
+ 
+inciden ts
+ 
+and
+ 
+knowledg e
+ 
+base
+ 
+articles.
+ 
+3.
+ 
+To
+ 
+build
+ 
+a
+ 
+pattern
+ 
+detection
+ 
+module
+ 
+that
+ 
+analy zes
+ 
+inciden t
+ 
+data
+ 
+to
+ 
+iden tify
+ 
+frequen tly
+ 
+recurring
+ 
+issues
+ 
+and
+ 
+group
+ 
+them
+ 
+into
+ 
+actionable
+ 
+"patterns".
+ 
+4.
+ 
+To
+ 
+develop
+ 
+an
+ 
+"Aut oheal
+ 
+Execut or"
+ 
+that
+ 
+can
+ 
+map
+ 
+valida ted
+ 
+patterns
+ 
+to
+ 
+a
+ 
+reposit ory
+ 
+of
+ 
+automa tion
+ 
+actions
+ 
+for
+ 
+simula ted,
+ 
+no-touch
+ 
+resolution.
+ 
+5.
+ 
+To
+ 
+deliv er
+ 
+a
+ 
+full-s tack
+ 
+PoC,
+ 
+including
+ 
+a
+ 
+FastAPI
+ 
+back end
+ 
+API
+ 
+and
+ 
+a
+ 
+React -based
+ 
+ 
+--- Page 4 ---
+ 
+frontend, that demons trates the end-t o-end workflo w on the provided 
+synthetic
+ 
+dataset.
+ 
+4.
+ 
+Scope
+ 
+of
+ 
+Work
+ The scope of this project is the developmen t of a functional Proof of Concep t (PoC) to 
+be
+ 
+comple ted
+ 
+independen tly
+ 
+by
+ 
+the
+ 
+studen t.
+ In Scope: 
+●
+ 
+Data:
+ 
+The
+ 
+project
+ 
+will
+ 
+exclusiv ely
+ 
+use
+ 
+the
+ 
+provided
+ 
+synthetic
+ 
+dataset
+ 
+(Inciden t_His tory.csv,
+ 
+Chat_Transcrip ts.cs v,
+ 
+KB_Articles.cs v,
+ 
+etc.).
+ 
+●
+ 
+Back end:
+ 
+Developmen t
+ 
+of
+ 
+a
+ 
+comple te
+ 
+Python-based
+ 
+FastAPI
+ 
+server
+ 
+to
+ 
+host
+ 
+all
+ 
+core
+ 
+logic,
+ 
+ML
+ 
+models,
+ 
+and
+ 
+API
+ 
+endpoin ts.
+ 
+●
+ 
+Seman tic
+ 
+Sear ch:
+ 
+Building
+ 
+a
+ 
+FAISS
+ 
+vector
+ 
+inde x
+ 
+from
+ 
+the
+ 
+inciden t
+ 
+and
+ 
+KB
+ 
+data.
+ 
+●
+ 
+Pattern
+ 
+Detection:
+ 
+Implemen ting
+ 
+ML
+ 
+or
+ 
+rule-based
+ 
+logic
+ 
+to
+ 
+iden tify
+ 
+patterns
+ 
+from
+ 
+the
+ 
+data
+ 
+files.
+ 
+●
+ 
+Frontend:
+ 
+Developmen t
+ 
+of
+ 
+a
+ 
+React -based
+ 
+web
+ 
+interface
+ 
+to
+ 
+sear ch
+ 
+for
+ 
+inciden ts,
+ 
+view
+ 
+patterns,
+ 
+and
+ 
+simula te
+ 
+auto-heal
+ 
+actions.
+ 
+●
+ 
+Simula tion:
+ 
+Auto-heal
+ 
+actions
+ 
+will
+ 
+be
+ 
+simula ted
+.
+ 
+The
+ 
+system
+ 
+will
+ 
+log
+ 
+the
+ 
+"action"
+ 
+that
+ 
+would
+ 
+have
+ 
+been
+ 
+taken
+ 
+(e.g.,
+ 
+"Simula ted
+ 
+execution:
+ 
+restart_pa ymen t_gateway.sh")
+ 
+rather
+ 
+than
+ 
+executing
+ 
+any
+ 
+real
+ 
+scrip ts.
+ Out of Scope: 
+●
+ 
+This
+ 
+project
+ 
+is
+ 
+a
+ 
+PoC
+ 
+and
+ 
+will
+ 
+not
+ 
+be
+ 
+deplo yed
+ 
+in
+ 
+a
+ 
+live
+ 
+production
+ 
+environmen t.
+ 
+●
+ 
+The
+ 
+frame work
+ 
+will
+ 
+not
+ 
+connect
+ 
+to
+ 
+live
+ 
+enterprise
+ 
+ticketing
+ 
+systems
+ 
+(e.g.,
+ 
+a
+ 
+real
+ 
+ServiceNo w
+ 
+instance).
+ 
+All
+ 
+interactions
+ 
+are
+ 
+with
+ 
+the
+ 
+provided
+ 
+CSV
+ 
+datasets.
+ 
+●
+ 
+The
+ 
+system
+ 
+will
+ 
+not
+ 
+perform
+ 
+real-time
+ 
+data
+ 
+ingestion;
+ 
+it
+ 
+will
+ 
+be
+ 
+pre-loaded
+ 
+with
+ 
+the
+ 
+dataset
+ 
+at
+ 
+startup.
+ 
+●
+ 
+The
+ 
+MLOps
+ 
+integration
+ 
+(
+ 
+Continuous
+ 
+Training
+ 
+of
+ 
+model)
+  
+has
+ 
+been
+ 
+brough t
+ 
+out
+ 
+of
+ 
+scope
+ 
+due
+ 
+to
+ 
+the
+ 
+exhaus tive
+ 
+effort
+ 
+involved
+ 
+and
+ 
+the
+ 
+time
+ 
+available
+ 
+as
+ 
+discussed
+ 
+with
+ 
+Dhuruba
+ 
+Adhik ary
+ 
+sir.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+5.
+ 
+Plan
+ 
+of
+ 
+Work
+  
+ 
+--- Page 5 ---
+ 
+Phases Start Date-End Date Work to be done 
+Dissert ation Outline 2 Nov 2025 – 15 Nov 2025 Literature Review and prepar e Dissert ation Outline 
+Design, Developmen t 
+&
+ 
+testing
+ 
+ Sprin t 1 16 Nov 2025 – 29 Nov 2025 1. Build Back end API (FastAPI): Create core server. 2. Implemen t Seman tic Sear ch: Load Inciden t_His tory.csv & KB_Articles.cs v into a FAISS vector inde x. Create /api/v1/ sear ch endpoin t. 3. Build Frontend (React): Create a web UI with a sear ch bar to quer y the API and displa y inciden t/KB results. 4. Implemen t Pattern Detection: Analy ze Chat_Transcrip ts.cs v and Pattern_R eposit ory.csv. Create a /api/v1/pa tterns endpoin t. Mid-Sem Deliv erable: A functional web app for sear ching inciden ts and viewing detected patterns. Design, Developmen t 
+&
+ 
+testing
+ 
+ Sprin t 2 30 Nov 2025 – 26 Dec 2025 1. Build Autoheal Module: Link patterns from Phase 3 to Autoheal_Actions.cs v. Create a "Simula te Heal" button in the UI. 2. Final Testing: Conduct end-t o-end testing of the full workflo w. 3. Write Final Report: Documen t all code, architectur e, and results for the dissert ation. Final Deliv erable: A comple te, working PoC demons trating the full lifecycle (Sear ch -> Detect -> Auto-Heal -> Feedback) and the final dissert ation report. Testing 27 Dec 2025 – 17 Jan 2026 Softw are Testing, User Evalua tion & Conclusion 
+Dissert ation Review & Final submission  18 Jan 2026-1 Feb 2026 Super visor & Additional Examiner review & Feedback. Final Review and submission of Dissert ation 
+ 
+ 
+--- Page 6 ---
+ 
+6.
+ 
+Literature
+ 
+References
+ 
+ Belo w are references for my initial literature review:  
+ 
+[1]
+ 
+Reimer s,
+ 
+N.,
+ 
+&
+ 
+Gurevych,
+ 
+I.
+ 
+(2019).
+ 
+Sentence-BER T:
+ 
+Sentence
+ 
+Embeddings
+ 
+using
+ 
+Siamese
+ 
+BERT-Network s
+.
+ 
+Proceedings
+ 
+of
+ 
+the
+ 
+2019
+ 
+Conference
+ 
+on
+ 
+Empiric al
+ 
+Methods
+ 
+in
+ 
+Natural
+ 
+Languag e
+ 
+Processing.
+ 
+(Primar y
+ 
+paper
+ 
+for
+ 
+the
+ 
+all-MiniLM-L6- v2
+ 
+model).
+ 
+[2]
+ 
+Tatineni,
+ 
+Suman th.
+ 
+(2023).
+ 
+AIOp s
+ 
+in
+ 
+Cloud-na tive
+ 
+DevOps:
+ 
+IT
+ 
+Oper ations
+ 
+Manag emen t
+ 
+with
+ 
+Artificial
+ 
+Intelligence.
+ 
+Journal
+ 
+of
+ 
+Artificial
+ 
+Intelligence
+ 
+&
+ 
+Cloud
+ 
+Computing.
+ 
+1-7.
+ 
+10.47363/ JAICC/2023(2)154.
+ 
+ 
+[3]
+ 
+Chen,
+ 
+Tianqi
+ 
+&
+ 
+Gues trin,
+ 
+Carlos.
+ 
+(2016).
+ 
+XGBoos t:
+ 
+A
+ 
+Scalable
+ 
+Tree
+ 
+Boos ting
+ 
+System.
+ 
+785-794.
+ 
+10.1145/2939672.2939785.
+ 
+ 
+[4]
+ FastAPI Official Documen tation: h t tp s://f as t api. tiang olo.c om/ (Primar y reference for the back end API frame work).
+ 
+ 
+--- Page 7 ---
+ 
+7.
+ 
+Particular s
+ 
+of
+ 
+the
+ 
+Super visor
+ 
+and
+ 
+Examiner
+ 
+  Super visor Additional Examiner 
+Name Natarajan Jayapal Balajee Mag eswaran Murug an 
+Qualific ation MCA    BE 
+Designa tion Sr. Manag er – Softw are Developmen t Sr. Manag er – Softw are Developmen t 
+Emplo ying 
+Organization 
+and Location Verizon Data Services India Ltd, 
+Olympia Technology Park, Sidco 
+Indus trial Estate, Guindy , Chennai, 
+Tamil Nadu – 600 032 Verizon Data Services India Ltd, 
+Olympia Technology Park, Sidco 
+Indus trial Estate, Guindy , Chennai, 
+Tamil Nadu – 600 032 
+Phone 
+No.(with  STD 
+Code) +91 96594 13715 +91 98438 23127 
+Email Addr ess natarajan.ja yapal.balajee@v erizon.c om mag eswaran.x.murug an@v erizon.c om 
+      
+8.
+ 
+Remark s
+ 
+of
+ 
+the
+ 
+Super visor
+ 
+The measur able Key Performance Indic ators (KPIs)—including accur acy, precision, and 
+recall
+—pr ove
+ 
+that
+ 
+the
+ 
+studen t
+ 
+is
+ 
+focused
+ 
+on
+ 
+rigorous,
+ 
+quan tifiable
+ 
+results
+ 
+and
+ 
+practic al
+ 
+impr ovemen ts
+ 
+in
+ 
+the
+ 
+defect
+ 
+resolution
+ 
+cycle.
+ 
+Based on our conversation, the studen t is a highly capable individual with the drive and 
+technic al
+ 
+facility
+ 
+requir ed
+ 
+to
+ 
+execut e
+ 
+this
+ 
+comple x
+ 
+experimen t
+ 
+to
+ 
+a
+ 
+high
+ 
+standar d.
+ 
+This
+ 
+project
+ 
+is
+ 
+a
+ 
+guar anteed
+ 
+public ation
+ 
+candida te
+ 
+and
+ 
+represen ts
+ 
+a
+ 
+signific ant
+ 
+contribution
+ 
+to
+ 
+the
+ 
+field.
+ 
+I
+ 
+fully
+ 
+endor se
+ 
+this
+ 
+project
+ 
+and
+ 
+am
+ 
+excited
+ 
+to
+ 
+see
+ 
+the
+ 
+results.
+ 
+ 
+ 
+--- Page 8 ---
+ 
+      BIRLA INSTITUTE OF TECHNOLOGY & SCIENCE, PILANI WORK INTEGRATED LEARNING PROGRAMMES (WILP) DIVISION SECOND SEMESTER OF ACADEMIC YEAR 2024-2025  AIML CZG628T : An AI-Driv en Self-Service Tool for Inciden t Triaging & Prevention  STUDENT ID No.   2023A C05247 NAME OF THE STUDENT  Aslam Mohamed Ehiya STUDENT'S EMAIL ADDRE SS  2023ac05247@wilp.bits-pilani.ac.in STUDENT ’S EMPL OYING ORGANIZ ATION & LOCA TION  Verizon, Chennai SUPER VISOR’S NAME  Natarajan Jayapal Balajee SUPER VISOR’S EMPL OYING ORGANIZ ATION & LOCA TION  Verizon, Chennai SUPER VISOR’S EMAIL ADDRE SS natarajan.ja yapal.balajee@v erizon.c om ADDITIONAL EXAMINER'S NAME Mag eswaran Murug an ADDITIONAL EXAMINER’S EMPL OYING ORGANIZ ATION & LOCA TION  Verizon, Chennai ADDITIONAL EXAMINER’S EMAIL ADDRE SS mag eswaran.x.murug an@v erizon.c om DISSER TATION / PROJECT / PROJECT WORK TITLE An AI-Driv en Self-Service Tool for Inciden t Triaging & Prevention    
+      
+Signa ture of Studen t Signa ture of Super visor Signa ture of Additional Examiner 
+Name:Aslam Mohamed Ehiya Name:Natarajan Jayapal Balajee Name:Mag eswaran Murug an 
+ 
+ 

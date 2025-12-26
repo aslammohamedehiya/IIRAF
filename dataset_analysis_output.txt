@@ -1,0 +1,26 @@
+﻿python : Traceback (most recent call last):
+At line:1 char:1
++ python analyze_dataset_quality.py 2>&1 | Out-File -Encoding utf8 data ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Aslam BITS\IIRAF requirement\IIRAF_PoC_Starter\analyze_dataset_quality.py", line 200, in <module>
+============================================================
+IIRAF DATASET QUALITY ANALYSIS
+============================================================
+
+1. DATASET OVERVIEW
+   Incidents: 250 records
+   KB Articles: 80 records
+   Columns: ['incident_id', 'application', 'issue_summary', 'issue_description', 'severity', 'root_cause', 'resolution', 'pattern_id', 'created_at', 'resolved_at', 'time_to_resolve_minutes', 'escalated']
+
+2. DATA COMPLETENESS
+    analyze_dataset_quality()
+  File "C:\Aslam BITS\IIRAF requirement\IIRAF_PoC_Starter\analyze_dataset_quality.py", line 28, in 
+analyze_dataset_quality
+    print("   \u2713 No missing values - EXCELLENT")
+  File "C:\Users\pawza\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 3: character maps to <undefined>

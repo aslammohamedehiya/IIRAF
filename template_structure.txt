@@ -1,0 +1,487 @@
+
+--- Page 1 ---
+AI-Based Customer Journey Analyzer 
+ 
+ 
+Course
+ 
+No:
+ 
+AIMLCZG628T
+ 
+Course Title: Dissertation 
+ 
+ 
+Dissertation
+ 
+Done
+ 
+by:
+ 
+Student Name: Sumithra Jayaraman 
+BITS ID: 2023AC05275 
+Degree Program: M.Tech. - Artificial Intelligence & Machine Learning 
+ 
+ 
+Research
+ 
+Area:
+ 
+Customer
+ 
+Analytics,
+ 
+Artificial
+ 
+Intelligence
+ 
+ 
+ 
+Dissertation
+ 
+/
+ 
+Project
+ 
+Work
+ 
+carried
+ 
+out
+ 
+at:
+ 
+Verizon, Chennai 
+ 
+ 
+ 
+BIRLA
+ 
+INSTITUTE
+ 
+OF
+ 
+TECHNOLOGY
+ 
+&
+ 
+SCIENCE,
+ 
+PILANI
+ 
+ 
+VIDYA
+ 
+VIHAR,
+ 
+PILANI,
+ 
+RAJASTHAN
+ 
+-
+ 
+333031.
+ 
+ 
+ 
+December,
+ 
+2025
+ 
+ 
+ 
+
+--- Page 2 ---
+  
+Contents 
+ 
+1.
+ 
+Abstract
+ 
+Summar y
+ 
+3 
+2.
+ 
+Technic al
+ 
+Architectur e
+ 
+3 
+2.1
+.
+ 
+          
+Project
+ 
+Workspace
+ 
+Architectur e
+ 
+3 
+2.2
+.
+ 
+          
+Functional
+ 
+Block s
+ 
+4 
+2.3
+.
+ 
+          
+Design
+ 
+Consider ations
+ 5 
+2.4
+.
+ 
+          
+Process
+ 
+&
+ 
+Technology
+ 
+Used
+ 
+5 
+3
+.
+ 
+Work
+ 
+Accomplished
+ 
+(Comple ted)
+ 
+6 
+4
+.
+ 
+Futur e
+ 
+Work
+ 7   
+  
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+--- Page 3 ---
+1. Abstract Summary  1.1 Project Overview  The AI-Based Customer Journe y Analy zer is a modular , full-s tack applic ation designed to analy ze 
+comple x
+ 
+customer
+ 
+interaction
+ 
+logs
+ 
+across
+ 
+multiple
+ 
+channels.
+ 
+It
+ 
+uses
+ 
+unsuper vised
+ 
+machine
+ 
+learning
+ 
+(K-Means
+ 
+Clustering)
+ 
+and
+ 
+Natural
+ 
+Languag e
+ 
+Processing
+ 
+(NLP)
+ 
+to
+ 
+segmen t
+ 
+customer s
+ 
+based
+ 
+on
+ 
+their
+ 
+beha vior
+ 
+patterns
+ 
+and
+ 
+provide
+ 
+actionable
+ 
+insigh ts
+ 
+into
+ 
+their
+ 
+journe y.
+  1.2 Problem Statemen t  Organizations often struggle to synthesiz e vast amoun ts of heterogeneous interaction data (Web, 
+App,
+ 
+Call
+ 
+Center,
+ 
+etc.)
+ 
+into
+ 
+a
+ 
+coher ent
+ 
+under standing
+ 
+of
+ 
+customer
+ 
+loyalty
+ 
+and
+ 
+friction.
+ 
+Manual
+ 
+analy sis
+ 
+is
+ 
+slow,
+ 
+and
+ 
+simple
+ 
+rule-based
+ 
+systems
+ 
+fail
+ 
+to
+ 
+capture
+ 
+nuanced
+ 
+beha vioral
+ 
+shifts,
+ 
+leading
+ 
+to
+ 
+missed
+ 
+opportunities
+ 
+for
+ 
+proactiv e
+ 
+retention
+ 
+and
+ 
+service
+ 
+impr ovemen t.
+  1.3 Key Objectiv e  To provide an automa ted, AI-driv en platform that: 
+●
+ 
+Segmen t
+ 
+customer s
+ 
+into
+ 
+meaningful
+ 
+loyalty
+ 
+tiers
+ 
+using
+ 
+objectiv e
+ 
+beha vioral
+ 
+features.
+ 
+●
+ 
+Quan tifies
+ 
+customer
+ 
+friction
+ 
+and
+ 
+interaction
+ 
+quality .
+ 
+●
+ 
+Gener ates
+ 
+human-r eadable
+ 
+summaries
+ 
+of
+ 
+comple x
+ 
+customer
+ 
+journe ys
+ 
+using
+ 
+LLMs.
+ 
+●
+ 
+Offers
+ 
+an
+ 
+interactiv e
+ 
+dashboar d
+ 
+for
+ 
+both
+ 
+individual
+ 
+customer
+ 
+look ups
+ 
+and
+ 
+high-le vel
+ 
+system
+ 
+monit oring.
+    2. Technical Architecture 
+2.1 Project Workspace Architectur e 
+The system is organized into a modular , decoupled structur e to ensur e scalability and ease of 
+main tenance.
+ 
+Core
+ 
+logic
+ 
+is
+ 
+centralized
+ 
+within
+ 
+the
+ 
+src/
+ 
+directory
+ 
+to
+ 
+be
+ 
+shar ed
+ 
+across
+ 
+both
+ 
+the
+ 
+back end
+ 
+API
+ 
+and
+ 
+standalone
+ 
+training
+ 
+scrip ts.
+ 
+●
+ 
+app/ — Deliv ery Layer 
+○
+ 
+main.py: FastAPI back end managing asynchr onous endpoin ts for data processing 
+and
+ 
+model
+ 
+look ups.
+ 
+○
+ 
+dashboard.py: Streamlit -based frontend providing interactiv e journe y mapping 
+and
+ 
+cohort
+ 
+visualiz ations.
+ 
+●
+ 
+src/ — Logic & Analy tics Layer 
+○
+ 
+data_generator.py: Logic for simula ting comple x customer interaction logs 
+across
+ 
+multiple
+ 
+channels.
+ 
+○
+ 
+preprocessing.py: Data cleaning and feature engineering , including Time-Dec ay 
+ 

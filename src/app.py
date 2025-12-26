@@ -5,10 +5,12 @@ from pydantic import BaseModel
 from typing import List, Optional
 
 from src.query_retrieval import QueryRetriever
-from src.pattern_engine import PatternEngine
+# DISABLED: from src.pattern_engine import PatternEngine
 from src.autoheal_simulator import AutoHealSimulator
 from src.build_index import build_index, get_index_info
 from src.solution_generator import SolutionGenerator
+# DISABLED: from src.visualization import IncidentVisualizer
+from src.severity_predictor import SeverityPredictor
 import time
 
 app = FastAPI(title="IIRAF PoC API")
@@ -24,9 +26,11 @@ app.add_middleware(
 # Initialize modules
 try:
     retriever = QueryRetriever()
-    pattern_engine = PatternEngine()
+    # DISABLED: pattern_engine = PatternEngine()
     healer = AutoHealSimulator()
     solution_generator = SolutionGenerator()
+    # DISABLED: visualizer = IncidentVisualizer()
+    severity_predictor = SeverityPredictor()
 except Exception as e:
     print(f"Error initializing modules: {e}")
 
@@ -77,8 +81,20 @@ def search_incidents(payload: SearchQuery):
 
 @app.get("/api/patterns")
 def get_patterns():
-    patterns = pattern_engine.analyze_patterns()
-    return {"patterns": patterns}
+    # DISABLED: Pattern detection functionality
+    return {"patterns": [], "disabled": True, "message": "Pattern detection has been disabled"}
+
+@app.get("/api/patterns/clusters")
+def get_cluster_patterns():
+    """Get detailed cluster-based patterns"""
+    # DISABLED: Cluster pattern functionality
+    return {"clusters": [], "total": 0, "disabled": True, "message": "Cluster patterns have been disabled"}
+
+@app.get("/api/patterns/anomalies")
+def get_anomalies():
+    """Get anomalous incidents that don't fit patterns"""
+    # DISABLED: Anomaly detection functionality
+    return {"anomalies": None, "disabled": True, "message": "Anomaly detection has been disabled"}
 
 @app.post("/api/heal")
 def trigger_heal(payload: HealRequest):
@@ -143,6 +159,43 @@ def refresh_index():
             "success": False,
             "message": f"Error refreshing index: {str(e)}"
         }
+
+# Visualization Endpoints
+@app.get("/api/visualization/incident-map")
+def get_incident_map_2d(severity: str = None, application: str = None):
+    """Get 2D visualization coordinates for incidents"""
+    # DISABLED: Incident map visualization
+    return {"error": "Incident map visualization has been disabled", "disabled": True}
+
+@app.get("/api/visualization/incident-map-3d")
+def get_incident_map_3d():
+    """Get 3D visualization coordinates for incidents"""
+    # DISABLED: 3D incident map visualization
+    return {"error": "3D incident map visualization has been disabled", "disabled": True}
+
+@app.get("/api/visualization/filters")
+def get_visualization_filters():
+    """Get available filter options for visualization"""
+    # DISABLED: Visualization filters
+    return {"error": "Visualization filters have been disabled", "disabled": True}
+
+# Prediction Endpoints
+@app.post("/api/predict/severity")
+def predict_severity(payload: SearchQuery):
+    """Predict incident severity from description"""
+    try:
+        prediction = severity_predictor.predict(payload.query)
+        return prediction
+    except Exception as e:
+        return {"error": str(e), "severity": "Unknown"}
+
+@app.get("/api/predict/model-info")
+def get_predictor_info():
+    """Get information about the severity prediction model"""
+    try:
+        return severity_predictor.get_model_info()
+    except Exception as e:
+        return {"error": str(e)}
 
 # Serve Frontend
 # Assuming we will put frontend files in 'frontend' folder at root or specific static folder

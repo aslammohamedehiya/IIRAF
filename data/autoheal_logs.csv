@@ -1,31 +1,144 @@
-id,pattern_id,action,success,timestamp
-LOG0001,PAT03,Restart Service,0,2025-12-10T23:48:59.814990
-LOG0002,PAT03,Restart Service,0,2025-12-09T23:48:59.814990
-LOG0003,PAT01,Reset Adapter,0,2025-12-11T23:48:59.814990
-LOG0004,PAT01,Clear Cache,0,2025-12-06T23:48:59.814990
-LOG0005,PAT02,Reset Adapter,1,2025-12-04T23:48:59.814990
-LOG0006,PAT03,Reset Adapter,0,2025-12-12T23:48:59.814990
-LOG0007,PAT01,Clear Cache,1,2025-12-03T23:48:59.814990
-LOG0008,PAT03,Clear Cache,0,2025-12-06T23:48:59.814990
-LOG0009,PAT01,Restart Service,0,2025-12-03T23:48:59.814990
-LOG0010,PAT01,Restart Service,0,2025-12-09T23:48:59.814990
-LOG0011,PAT03,Restart Service,0,2025-12-11T23:48:59.814990
-LOG0012,PAT02,Reset Adapter,1,2025-12-06T23:48:59.814990
-LOG0013,PAT03,Clear Cache,0,2025-12-12T23:48:59.814990
-LOG0014,PAT02,Reset Adapter,0,2025-12-13T23:48:59.814990
-LOG0015,PAT03,Clear Cache,0,2025-12-10T23:48:59.814990
-LOG0016,PAT01,Restart Service,1,2025-12-12T23:48:59.814990
-LOG0017,PAT01,Restart Service,1,2025-12-06T23:48:59.814990
-LOG0018,PAT03,Clear Cache,0,2025-12-12T23:48:59.814990
-LOG0019,PAT03,Clear Cache,1,2025-12-05T23:48:59.814990
-LOG0020,PAT01,Reset Adapter,0,2025-12-09T23:48:59.814990
-LOG0021,PAT01,Reset Adapter,1,2025-12-07T23:48:59.814990
-LOG0022,PAT01,Reset Adapter,0,2025-12-06T23:48:59.814990
-LOG0023,PAT02,Clear Cache,0,2025-12-07T23:48:59.814990
-LOG0024,PAT02,Reset Adapter,1,2025-12-07T23:48:59.814990
-LOG0025,PAT03,Clear Cache,0,2025-12-08T23:48:59.814990
-LOG0026,PAT03,Restart Service,0,2025-12-04T23:48:59.814990
-LOG0027,PAT01,Restart Service,0,2025-12-04T23:48:59.814990
-LOG0028,PAT03,Restart Service,1,2025-12-12T23:48:59.814990
-LOG0029,PAT03,Clear Cache,0,2025-12-10T23:48:59.814990
-LOG0030,PAT03,Clear Cache,0,2025-12-03T23:48:59.814990
+heal_id,incident_id,action_type,action_details,success_rate,executed_at
+HEAL00001,INC00002,trigger_update,"Update to iOS 18.2; Disable ""Satellite"" features in settings.",0.85,2024-05-20T00:12:00
+HEAL00002,INC00004,trigger_update,"Clear ""Carrier Services"" app cache; Hard Reboot.",0.76,2024-08-04T00:12:00
+HEAL00003,INC00006,apply_config_fix,"Disable ""Wi-Fi Calling"" or ""Intelligent Wi-Fi"" switch.",0.88,2024-09-15T00:08:00
+HEAL00004,INC00007,apply_config_fix,"Switch Data Mode to ""Low Data Mode"" to throttle heat.",0.73,2024-04-11T00:22:00
+HEAL00005,INC00008,apply_config_fix,"Uninstall updates to ""VVM"" app; Clear App Data.",0.74,2024-10-06T00:25:00
+HEAL00006,INC00009,reprovision_esim,Reprovision IMEI in billing system; Reset APN settings.,0.92,2024-04-22T00:20:00
+HEAL00007,INC00010,apply_config_fix,"Unpair/Re-pair Watch; ""Remove Cellular Plan"" and re-add.",0.89,2024-10-28T00:14:00
+HEAL00008,INC00012,manual_intervention,Whitelist Short Codes (225-999); Call VZ to sync SMS Gateway.,0.57,2024-03-22T00:07:00
+HEAL00009,INC00013,clear_cache,Turn off RCS; Airplane Mode ON; Clear Msgs Cache; Turn RCS ON.,0.76,2024-08-04T00:28:00
+HEAL00010,INC00014,reset_network_settings,Update Carrier Settings (About > General); Dial *73 to disable forwarding.,0.93,2024-05-22T00:10:00
+HEAL00011,INC00015,apply_config_fix,"Disable ""Motion Smoothness"" (Hardware bug); wait for OneUI patch.",0.91,2024-04-20T00:06:00
+HEAL00012,INC00016,apply_config_fix,"Remove ""Business Productivity"" SOC code and re-add.",0.8,2024-02-22T00:20:00
+HEAL00013,INC00018,restart_modem,Factory Reset device (Pin hole); Replace Physical SIM.,0.92,2024-01-23T00:14:00
+HEAL00014,INC00019,apply_config_fix,"Enable ""Send as SMS"" fallback; turn off Wi-Fi Calling for MMS.",0.7,2024-10-01T00:23:00
+HEAL00015,INC00020,apply_config_fix,"Disable ""Google Location Accuracy"" (High Accuracy) momentarily.",0.93,2024-07-12T00:15:00
+HEAL00016,INC00022,apply_config_fix,Disable IPv6 in Router Admin (Intel NIC compatibility bug).,0.84,2024-11-17T00:20:00
+HEAL00017,INC00023,apply_config_fix,Manually set 5GHz channel to 149 or 157 (Non-DFS).,0.73,2024-07-04T00:21:00
+HEAL00018,INC00024,manual_intervention,Check splitters (Must be 1675MHz); Reseat Coax cable.,0.36,2024-04-08T00:08:00
+HEAL00019,INC00026,apply_config_fix,"Check ""IGMP Snooping"" enabled on router; Ensure same subnet.",0.86,2024-02-10T00:27:00
+HEAL00020,INC00028,manual_intervention,Check RF Coax output on ONT; Replace Coax tip.,0.54,2024-05-22T00:23:00
+HEAL00021,INC00029,apply_config_fix,"Remove 12V Battery; Press ""Alarm Silence"" (Blue Button).",0.75,2024-11-21T00:24:00
+HEAL00022,INC00030,apply_config_fix,"Change ""Keep Until"" setting to ""I delete""; Upgrade DVR storage.",0.92,2024-03-24T00:18:00
+HEAL00023,INC00031,apply_config_fix,Unlink/Relink Provider in App Settings; Reset VZ Password.,0.72,2024-05-16T00:26:00
+HEAL00024,INC00033,apply_config_fix,Check Ethernet Cable (Cat5e/Cat6); Check NIC Duplex settings.,0.82,2024-11-21T00:12:00
+HEAL00025,INC00036,apply_config_fix,Rotate device 90 degrees; Move to different window.,0.77,2024-07-13T00:15:00
+HEAL00026,INC00038,apply_config_fix,"Call Support to update ""Service Address"" GPS coordinates.",0.7,2024-04-22T00:25:00
+HEAL00027,INC00041,manual_intervention,Tower congestion; nothing user can do (Network Management).,0.44,2024-07-24T00:10:00
+HEAL00028,INC00042,apply_config_fix,Use Incognito Window; Unlink Fios/Wireless accounts.,0.83,2024-10-17T00:27:00
+HEAL00029,INC00043,apply_config_fix,Disable Ad-blocker; Try My Verizon App instead of Desktop.,0.87,2024-09-12T00:25:00
+HEAL00030,INC00044,apply_config_fix,File PCA (Promo Correction); Provide Submission ID.,0.77,2024-11-25T00:24:00
+HEAL00031,INC00046,apply_config_fix,"Check ""Digital Reward Center""; Resubmit receipt image.",0.82,2024-03-12T00:19:00
+HEAL00032,INC00047,apply_config_fix,"Change plan to ""Unlimited Welcome"" or ""Plus"".",0.85,2024-10-14T00:18:00
+HEAL00033,INC00048,apply_config_fix,Mandatory fee on Business accounts; cannot remove.,0.93,2024-10-26T00:29:00
+HEAL00034,INC00049,apply_config_fix,Re-add Debit Card or VZ Visa (Credit Cards ineligible).,0.87,2024-10-25T00:11:00
+HEAL00035,INC00050,apply_config_fix,Re-verify via ID.me or SheerID portal; waits 1-2 cycles.,0.87,2024-07-04T00:24:00
+HEAL00036,INC00051,apply_config_fix,"Ensure both accounts have same ""Last Name"" and ""Billing Address"".",0.72,2024-03-11T00:19:00
+HEAL00037,INC00052,apply_config_fix,App Glitch; check usage via #DATA (#3282) dialer code.,0.79,2024-09-09T00:23:00
+HEAL00038,INC00054,apply_config_fix,"Toggle ""Apple Music"" OFF/ON in ""Add-ons""; Re-link Apple ID.",0.93,2024-03-19T00:11:00
+HEAL00039,INC00055,apply_config_fix,"Provide UPS Drop-off Receipt; Open ""Warehouse Research"" tkt.",0.74,2024-03-22T00:15:00
+HEAL00040,INC00056,apply_config_fix,"Credit Request; explain ""System Error"" during online checkout.",0.81,2024-08-04T00:26:00
+HEAL00041,INC00058,apply_config_fix,Inventory mismatch; Order must be re-placed for shipping.,0.72,2024-07-14T00:21:00
+HEAL00042,INC00059,apply_config_fix,"Type ""Agent"" 3 times; Select ""Tech Support"" not ""Billing"".",0.71,2024-08-27T00:09:00
+HEAL00043,INC00060,apply_config_fix,"Schedule ""Call Back"" via App; Call 8 AM EST sharp.",0.81,2024-10-10T00:06:00
+HEAL00044,INC00061,apply_config_fix,"Verify if ""Authorized Retailer"" (Victra/TCC); Go to Corp Store.",0.87,2024-02-28T00:14:00
+HEAL00045,INC00062,apply_config_fix,Wait for App Store update; Use Mobile Web (https://www.google.com/search?q=m.verizon.com).,0.8,2024-05-16T00:05:00
+HEAL00046,INC00063,reprovision_esim,Connect to Wi-Fi; Scan QR code provided by Chat Support.,0.84,2024-06-23T00:06:00
+HEAL00047,INC00064,manual_intervention,Remove SIM; Clean contacts; Re-insert; Reset Network Settings.,0.51,2024-05-30T00:22:00
+HEAL00048,INC00065,apply_config_fix,Normal physics (Faraday cage); Use Wi-Fi Calling.,0.93,2024-03-21T00:07:00
+HEAL00049,INC00066,manual_intervention,Use wired CarPlay (High quality cable); Disable Wi-Fi on phone.,0.44,2024-05-14T00:14:00
+HEAL00050,INC00067,manual_intervention,Check Plan features (Starter Unlimited has no hotspot).,0.53,2024-04-01T00:29:00
+HEAL00051,INC00068,apply_config_fix,Remove battery immediately; Run on USB power if supported.,0.88,2024-02-24T00:18:00
+HEAL00052,INC00070,apply_config_fix,"Disable ""Roaming"" before flight; ""Wi-Fi Calling"" triggers fee.",0.81,2024-09-16T00:17:00
+HEAL00053,INC00072,apply_config_fix,Move Extender closer to Router (White light = Good).,0.87,2024-07-10T00:22:00
+HEAL00054,INC00074,apply_config_fix,Stop playback on other STBs; Reboot Main VMS Server box.,0.73,2024-01-01T00:22:00
+HEAL00055,INC00077,apply_config_fix,"Disable ""Home Network Protection"" in My Fios App.",0.91,2024-06-06T00:29:00
+HEAL00056,INC00080,apply_config_fix,Dispute condition; Request photos of damage from warehouse.,0.84,2024-02-13T00:22:00
+HEAL00057,INC00083,apply_config_fix,Remove via App > Add-ons; Pro-rated refund next bill.,0.74,2024-03-25T00:11:00
+HEAL00058,INC00084,apply_config_fix,Remove via App; Download data before deletion (30 days).,0.88,2024-09-27T00:08:00
+HEAL00059,INC00086,apply_config_fix,"Post publicly to trigger ""Social Media Team"" escalation.",0.85,2024-10-03T00:05:00
+HEAL00060,INC00089,apply_config_fix,Update Android OS; Remove/Re-add fingerprint.,0.81,2024-09-21T00:26:00
+HEAL00061,INC00090,apply_config_fix,"Force close ""Find My""; Update iOS.",0.71,2024-04-25T00:28:00
+HEAL00062,INC00092,apply_config_fix,Accessibility Settings > Key Repeat > Turn Off/Adjust.,0.83,2024-04-27T00:29:00
+HEAL00063,INC00093,apply_config_fix,Hard Reset (Power + Vol Down); Warranty claim.,0.71,2024-04-22T00:21:00
+HEAL00064,INC00094,apply_config_fix,Hardware damage; Insurance claim (Asurion).,0.76,2024-02-06T00:28:00
+HEAL00065,INC00095,clear_cache,"Clean port with toothpick; Clear ""USBSettings"" cache.",0.84,2024-01-31T00:29:00
+HEAL00066,INC00096,apply_config_fix,Access Admin UI; Trigger WPS Soft-button manually.,0.78,2024-02-04T00:14:00
+HEAL00067,INC00097,apply_config_fix,Check bill; Refresh permissions via automated phone system.,0.95,2024-06-18T00:21:00
+HEAL00068,INC00101,apply_config_fix,Dry port; Use MagSafe wireless charger temporarily.,0.92,2024-10-19T00:10:00
+HEAL00069,INC00102,apply_config_fix,Reset S-Pen (Settings > Advanced > S-Pen > Reset).,0.81,2024-08-30T00:20:00
+HEAL00070,INC00105,apply_config_fix,Factory Reset via Recovery Mode (Vol Down + Power).,0.8,2024-07-29T00:21:00
+HEAL00071,INC00107,apply_config_fix,"Verify address; Request ""Stop Payment"" & Reissue check.",0.74,2024-11-26T00:17:00
+HEAL00072,INC00109,apply_config_fix,Pay immediately; Dispute mark on Credit Report.,0.76,2024-06-22T00:12:00
+HEAL00073,INC00111,apply_config_fix,"Call Dispatch; Request $50 ""Missed Appt"" credit.",0.9,2024-04-07T00:06:00
+HEAL00074,INC00112,apply_config_fix,Use Kiosk; Use App to pay bill.,0.94,2024-08-17T00:22:00
+HEAL00075,INC00113,apply_config_fix,Reset via PIN sent to device; Visit store with ID.,0.8,2024-08-04T00:13:00
+HEAL00076,INC00115,manual_intervention,Clear Recent Calls list; Reset Network Settings.,0.58,2024-05-07T00:16:00
+HEAL00077,INC00117,apply_config_fix,"Disable ""Adaptive Charging""; Check case thickness.",0.75,2024-02-20T00:13:00
+HEAL00078,INC00119,apply_config_fix,Forget Device; Charge Pencil on side; Restart iPad.,0.71,2024-02-17T00:07:00
+HEAL00079,INC00121,apply_config_fix,Cosmetic; Request replacement if battery exposed.,0.88,2024-09-05T00:22:00
+HEAL00080,INC00124,apply_config_fix,Mandatory fee; Cannot remove unless cancelling TV.,0.78,2024-07-18T00:05:00
+HEAL00081,INC00127,apply_config_fix,mmWave attenuation; Fallback to LTE is normal.,0.89,2024-09-06T00:29:00
+HEAL00082,INC00128,apply_config_fix,"Check plan (""Plus"" = up to 300; ""Pro"" = up to 1000).",0.76,2024-04-07T00:24:00
+HEAL00083,INC00129,apply_config_fix,Disable WPA3; Use WPA2-AES security.,0.8,2024-04-21T00:12:00
+HEAL00084,INC00130,apply_config_fix,Lower MTU size to 1428 on VPN client.,0.89,2024-10-23T00:17:00
+HEAL00085,INC00131,apply_config_fix,"""Payment Investigation"" request; Provide Proof of Payment.",0.86,2024-02-01T00:14:00
+HEAL00086,INC00133,apply_config_fix,"""Tax Exemption/Correction"" ticket with proof of residency.",0.82,2024-10-26T00:08:00
+HEAL00087,INC00134,apply_config_fix,"Re-validate work email via ""Connections"" portal.",0.88,2024-09-14T00:29:00
+HEAL00088,INC00135,apply_config_fix,Unused prepaid funds do not transfer; Use before switch.,0.93,2024-03-21T00:16:00
+HEAL00089,INC00138,apply_config_fix,Update Profile > Accessibility preferences.,0.89,2024-02-04T00:05:00
+HEAL00090,INC00140,apply_config_fix,Legal (Private business); Must use Kiosk or Card.,0.84,2024-03-02T00:18:00
+HEAL00091,INC00144,apply_config_fix,Update iOS; Disable feature at theme parks.,0.76,2024-08-02T00:22:00
+HEAL00092,INC00145,apply_config_fix,Battery replacement (Hazard); Do not charge.,0.87,2024-10-25T00:13:00
+HEAL00093,INC00146,apply_config_fix,"Check ""Isolation"" setting; Reboot Router.",0.82,2024-09-24T00:28:00
+HEAL00094,INC00147,apply_config_fix,Power cycle STB.,0.82,2024-05-13T00:10:00
+HEAL00095,INC00148,apply_config_fix,Auto-correct STB via Menu.,0.79,2024-06-09T00:09:00
+HEAL00096,INC00149,apply_config_fix,Call Billing; One-time courtesy credit.,0.82,2024-05-15T00:22:00
+HEAL00097,INC00150,apply_config_fix,Replace Router immediately (Overheat risk).,0.94,2024-03-08T00:21:00
+HEAL00098,INC00152,reset_network_settings,"Switch Cellular Data Options to ""5G Auto"" or ""LTE Only"" to stop hunting for weak 5G signals.",0.94,2024-02-07T00:26:00
+HEAL00099,INC00156,apply_config_fix,"Check ""Blocked"" numbers; Contact support to ""Sync Messaging Profile"" on account back-end.",0.72,2024-02-05T00:09:00
+HEAL00100,INC00158,apply_config_fix,"Upgrade to ""Premium"" data tier (Welcome -> Plus) to regain QCI-8 (High Priority) network status.",0.79,2024-05-25T00:24:00
+HEAL00101,INC00159,apply_config_fix,"Place GPS antenna near window; Open UDP Ports 123, 500, and 4500 on home router firewall.",0.93,2024-10-05T00:20:00
+HEAL00102,INC00160,apply_config_fix,"Manually select a local carrier in ""Network Selection"" settings instead of ""Automatic.""",0.7,2024-09-27T00:22:00
+HEAL00103,INC00161,manual_intervention,"Power cycle ONT first, then Router; check for IP lease exhaustion in router admin (192.168.1.1).",0.3,2024-10-10T00:21:00
+HEAL00104,INC00162,apply_config_fix,Access router settings and Disable IPv6; force network to use IPv4 only for stable pings.,0.83,2024-02-23T00:14:00
+HEAL00105,INC00164,manual_intervention,Move unit away from direct sunlight; ensure bottom vents are not blocked by carpet or clutter.,0.5,2024-03-20T00:30:00
+HEAL00106,INC00165,manual_intervention,"Contact support to ""Refresh Location"" if moving unit within the same home triggered a lock.",0.35,2024-05-24T00:08:00
+HEAL00107,INC00166,apply_config_fix,"Request a ""PCA"" (Promotion Correction Action) form; requires IMEI of old device and tracking #.",0.76,2024-04-17T00:24:00
+HEAL00108,INC00167,apply_config_fix,Re-link a Debit Card or Verizon Visa; Credit Cards (non-VZ) are now ineligible for discount.,0.9,2024-04-14T00:13:00
+HEAL00109,INC00168,apply_config_fix,"Move to a ""myPlan"" (Welcome/Plus/Ultimate) tier; legacy plans are being phased out via fees.",0.72,2024-05-15T00:17:00
+HEAL00110,INC00169,apply_config_fix,"De-register the Fios ID and Wireless ID; re-register using a single, non-shared email address.",0.76,2024-09-07T00:27:00
+HEAL00111,INC00171,manual_intervention,"Disable ""Silence Unknown Callers""; Reset Network Settings to clear stale HLR (Home Location Register).",0.55,2024-11-20T00:25:00
+HEAL00112,INC00172,apply_config_fix,"Register number with ""Free Caller Registry"" (standard for major carriers) to clear reputation.",0.86,2024-05-21T00:06:00
+HEAL00113,INC00175,apply_config_fix,"Use ""C-Band"" (Mid-band) instead of mmWave; move closer to a window with line-of-sight to the small cell.",0.71,2024-03-23T00:05:00
+HEAL00114,INC00176,apply_config_fix,"Disable ""Self-Organizing Network"" in Fios settings; create separate SSIDs for 2.4GHz and 5GHz.",0.72,2024-10-09T00:18:00
+HEAL00115,INC00177,apply_config_fix,"Enable ""SQM"" or ""Quality of Service"" (QoS) on a 3rd party router (Bridge Mode) to manage traffic.",0.78,2024-10-14T00:08:00
+HEAL00116,INC00178,apply_config_fix,"Perform ""STB Auto-Correction"" via the Help menu on the Fios TV remote.",0.93,2024-02-27T00:12:00
+HEAL00117,INC00180,manual_intervention,"Use Ethernet instead of Wi-Fi; check ""NAT Type"" (aim for Type 2/Open) in gateway settings.",0.57,2024-01-19T00:20:00
+HEAL00118,INC00182,trigger_update,"Perform ""Hard Reboot"" (Vol Up, Vol Down, Hold Power); check for Day-1 patch from Apple/Samsung.",0.87,2024-03-06T00:13:00
+HEAL00119,INC00183,apply_config_fix,"Disable ""HD Voice"" temporarily if the other party is on a non-interoperable carrier (e.g., VoIP lines).",0.84,2024-06-06T00:06:00
+HEAL00120,INC00185,apply_config_fix,"Enable ""Maximum Data Throughput"" or ""4K Streaming"" toggle in My Verizon Plan Add-ons.",0.7,2024-05-07T00:11:00
+HEAL00121,INC00186,apply_config_fix,"Test with different Cat6 cable; if no link light, request router replacement (RMA).",0.89,2024-02-22T00:27:00
+HEAL00122,INC00187,apply_config_fix,"Disable ""WPS"" and ""SSID Broadcast""; some beacons are required for Fios TV boxes to function.",0.93,2024-07-27T00:14:00
+HEAL00123,INC00190,apply_config_fix,"Call ""Core"" support to ""Kill"" the stuck order in the ACSS/OMNI billing system.",0.8,2024-07-30T00:22:00
+HEAL00124,INC00192,manual_intervention,"Manual configuration of Gateway into ""IP Passthrough"" mode; requires Level 3 Tech support.",0.34,2024-07-29T00:27:00
+HEAL00125,INC00193,apply_config_fix,"Escalation to ""Executive Relations"" via the corporate ""Contact Us"" feedback form.",0.83,2024-05-07T00:16:00
+HEAL00126,INC00195,clear_cache,"Update ""Carrier Services"" app from Play Store; Clear cache of Google Messages app.",0.91,2024-01-20T00:15:00
+HEAL00127,INC00196,apply_config_fix,"Check ""Data Switching"" toggle; ensure APN settings for line 2 are correctly populated.",0.85,2024-04-23T00:24:00
+HEAL00128,INC00198,apply_config_fix,"Re-pair via Wearable App; ""Remove and Re-add"" cellular plan on Apple/Galaxy Watch.",0.71,2024-04-26T00:13:00
+HEAL00129,INC00199,apply_config_fix,Update PRL (Preferred Roaming List) by dialing *228 (Legacy) or power cycling.,0.81,2024-04-08T00:12:00
+HEAL00130,INC00201,apply_config_fix,Assign a Static IP to the Extender's MAC address in your router’s DHCP settings.,0.81,2024-02-05T00:26:00
+HEAL00131,INC00202,apply_config_fix,"Update ""Share Name ID"" in the My Verizon app under Line Settings.",0.8,2024-06-28T00:29:00
+HEAL00132,INC00203,apply_config_fix,"Disable ""Data Saver"" mode; check for specific VZW ""Video Optimizer"" throttling.",0.9,2024-09-17T00:27:00
+HEAL00133,INC00207,apply_config_fix,"Replace old Cat5e cables with Cat6; check for ""Half-Duplex"" errors on the NIC.",0.74,2024-10-24T00:17:00
+HEAL00134,INC00216,apply_config_fix,"Resolutions: Clear browser cookies, use Incognito mode, or ""Unlink"" Fios/Wireless IDs.",0.84,2024-04-10T00:18:00
+HEAL00135,INC00219,trigger_update,"Res.: Update to the latest OS-level carrier bundle (e.g., VZW 58.0+); requires back-end ""Feature Add"" for 5G SA on the line profile.",0.85,2024-03-04T00:30:00
+HEAL00136,INC00225,apply_config_fix,"Res.: Filing a ""Notice of Dispute""; agents can sometimes apply a 12-month credit to offset the increase if the user is on a legacy 3-year lock.",0.93,2024-01-01T00:12:00
+HEAL00137,INC00226,apply_config_fix,"Res.: Manual ""Warehouse Research"" ticket; requires the UPS Tracking Number and IMEI to prove delivery and force credit application.",0.74,2024-05-26T00:17:00
+HEAL00138,INC00234,manual_intervention,Res.: Replace coax splitters with 1675MHz-rated units; ensure MoCA Privacy is disabled on the primary router if using 3rd party extenders.,0.41,2024-04-30T00:12:00
+HEAL00139,INC00235,manual_intervention,"Res.: Technical support must ""Break the Lease"" manually; ONT hardware replacement required if the ""Data"" light remains off after reboot.",0.45,2024-04-11T00:24:00
+HEAL00140,INC00239,apply_config_fix,"Res.: Filing a ""Notice of Dispute""; agents can sometimes apply a 12-month credit to offset the increase if the user is on a legacy 3-year lock.",0.78,2024-07-15T00:24:00
+HEAL00141,INC00241,clear_cache,"Res.: Clear browser cache; ""Unlink"" and ""Relink"" the accounts under a new primary email address to force a fresh database sync.",0.81,2024-03-16T00:18:00
+HEAL00142,INC00242,manual_intervention,"Res.: Whitelist short-code 225-999; Tech support must ""Re-sync SMS Gateway"" for the primary account holder's line.",0.56,2024-01-03T00:24:00
+HEAL00143,INC00245,reprovision_esim,"Res.: Identity verification via in-store government ID; Fraud Department must ""Clear the Security Flag"" to restore automated provisioning.",0.75,2024-05-07T00:15:00

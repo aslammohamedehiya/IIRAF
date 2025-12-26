@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 
 <body>
@@ -28,8 +29,31 @@
             <label>Issue Description / Symptom</label>
             <div class="search-bar">
                 <i data-lucide="search" class="search-icon"></i>
-                <input type="text" id="search-input" placeholder="e.g., Payment Gateway 500 errors...">
+                <input type="text" id="search-input" placeholder="e.g., Payment Gateway 500 errors..."
+                    oninput="predictSeverityOnInput()">
                 <button class="analyze-btn" onclick="performAnalysis()">Analyze</button>
+            </div>
+            <div id="severity-prediction" class="severity-prediction hidden">
+                <span class="severity-label">Predicted Severity:</span>
+                <span id="severity-badge" class="severity-badge"></span>
+                <span id="severity-confidence" class="severity-confidence"></span>
+                <button class="model-info-toggle" onclick="toggleModelInfo()">Model Info</button>
+            </div>
+            <div id="model-info" class="model-info hidden">
+                <div class="model-info-content">
+                    <div class="model-metric">
+                        <span class="model-metric-label">Model Accuracy:</span>
+                        <span class="model-metric-value" id="model-accuracy">-</span>
+                    </div>
+                    <div class="model-metric">
+                        <span class="model-metric-label">Training Samples:</span>
+                        <span class="model-metric-value" id="model-samples">-</span>
+                    </div>
+                    <div class="model-metric">
+                        <span class="model-metric-label">Last Trained:</span>
+                        <span class="model-metric-value" id="model-trained">-</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -93,11 +117,19 @@
                     </div>
                 </div>
 
-                <!-- Pattern Detected -->
-                <div class="card pattern-card hidden" id="pattern-panel">
+                <!-- Pattern Detected - DISABLED -->
+                <div class="card pattern-card hidden" id="pattern-panel" style="display: none;">
                     <div class="pattern-header-text">
                         <i data-lucide="alert-triangle"></i> Pattern Detected
+                        <span class="info-icon">
+                            ?
+                            <span class="tooltip">HDBSCAN detected recurring incident pattern</span>
+                        </span>
                     </div>
+                    <p style="font-size: 0.8rem; color: #9a3412; padding: 0 1rem; margin-bottom: 0.5rem;">
+                        <strong>Why this matters:</strong> Your issue matches a known recurring pattern. This means we
+                        have seen this before and likely have a proven solution.
+                    </p>
                     <div class="pattern-box">
                         <p><strong>Pattern <span id="pattern-id">P002</span> identified.</strong></p>
                         <p id="pattern-desc">This matches a known recurring issue: "Payment Gateway Timeout Cluster B".
@@ -119,6 +151,93 @@
                     <div id="remediation-status" class="status-msg"></div>
                 </div>
 
+                <!-- Cluster Details Panel - DISABLED -->
+                <div class="card cluster-card hidden" id="cluster-panel" style="display: none;">
+                    <div class="cluster-header">
+                        <i data-lucide="layers"></i> Cluster Details
+                        <span class="info-icon">
+                            ?
+                            <span class="tooltip">HDBSCAN cluster analysis of similar incidents</span>
+                        </span>
+                    </div>
+                    <div class="cluster-body">
+                        <p style="font-size: 0.8rem; color: #0c4a6e; margin-bottom: 1rem;">
+                            <strong>What this shows:</strong> A group of similar incidents that our AI has clustered
+                            together.
+                            This helps you understand the broader context and common themes.
+                        </p>
+                        <div class="cluster-metrics">
+                            <div class="cluster-metric">
+                                <div class="cluster-metric-label">Cluster ID</div>
+                                <div class="cluster-metric-value" id="cluster-id">-</div>
+                            </div>
+                            <div class="cluster-metric">
+                                <div class="cluster-metric-label">Size</div>
+                                <div class="cluster-metric-value" id="cluster-size">-</div>
+                            </div>
+                        </div>
+                        <div class="cluster-description" id="cluster-description">
+                            No cluster information available
+                        </div>
+                        <div class="cluster-incidents">
+                            <div class="cluster-incidents-title">Representative Incidents</div>
+                            <ul class="cluster-incidents-list" id="cluster-incidents-list">
+                                <li>No incidents to display</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Incident Visualization Map - DISABLED -->
+                <div class="card viz-card" style="display: none;">
+                    <div class="viz-header">
+                        <i data-lucide="map"></i> Incident Map Visualization
+                        <span class="info-icon">
+                            ?
+                            <span class="tooltip">UMAP 2D projection of incident embeddings</span>
+                        </span>
+                    </div>
+                    <div class="viz-body">
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                            <strong>What this does:</strong> Visualizes all incidents in a 2D space where similar
+                            incidents cluster together.
+                            This helps identify patterns and outliers at a glance.
+                        </p>
+                        <button class="viz-load-btn" onclick="openIncidentMapModal()" style="width: 100%;">
+                            <i data-lucide="maximize-2"></i> Open Incident Map
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Incident Map - DISABLED -->
+    <div id="incident-map-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i data-lucide="map"></i>
+                    Incident Map Visualization
+                </div>
+                <button class="modal-close" onclick="closeIncidentMapModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="viz-filters">
+                    <select id="severity-filter" onchange="loadIncidentMap()">
+                        <option value="">All Severities</option>
+                        <option value="Critical">Critical</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                    <button class="viz-load-btn" onclick="loadIncidentMap()">
+                        <i data-lucide="refresh-cw"></i> Refresh Map
+                    </button>
+                </div>
+                <canvas id="incident-map-canvas" width="900" height="500"></canvas>
+                <div id="viz-stats" class="viz-stats"></div>
             </div>
         </div>
     </div>

@@ -1,26 +1,176 @@
 const API_BASE = "";
 
-// Static mappings for demo purposes, since backend data is random synthetic
-const MOCK_PATTERNS_MAP = {
-    "payment": {
-        id: "P002",
-        desc: "Payment Gateway Timeout Cluster B",
-        freq: 45,
-        script: "./restart_svc.sh -n payment -r us-east"
-    },
-    "vpn": {
-        id: "P005",
-        desc: "VPN Concentrator Certified Expired",
-        freq: 12,
-        script: "certbot renew --force-renewal --cert-name vpn"
-    },
-    "email": {
-        id: "P008",
-        desc: "Outlook Exchange Sync Timeout",
-        freq: 8,
-        script: "Restart-Service MSExchangeIS"
+// Real-time pattern detection using HDBSCAN backend
+let cachedPatterns = null;
+
+async function fetchPatterns() {
+    try {
+        const res = await fetch(`${API_BASE}/api/patterns`);
+        const data = await res.json();
+        cachedPatterns = data.patterns || [];
+        return cachedPatterns;
+    } catch (e) {
+        console.error("Failed to fetch patterns:", e);
+        return [];
     }
-};
+}
+
+// Severity prediction with debounce
+let severityDebounceTimer = null;
+
+async function predictSeverityOnInput() {
+    clearTimeout(severityDebounceTimer);
+
+    severityDebounceTimer = setTimeout(async () => {
+        const query = document.getElementById('search-input').value.trim();
+
+        if (query.length < 10) {
+            // Hide prediction if query too short
+            document.getElementById('severity-prediction').classList.add('hidden');
+            document.getElementById('model-info').classList.add('hidden');
+            return;
+        }
+
+        try {
+            const res = await fetch(`${API_BASE}/api/predict/severity`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query })
+            });
+            const data = await res.json();
+
+            // Display severity prediction
+            const predictionDiv = document.getElementById('severity-prediction');
+            const badge = document.getElementById('severity-badge');
+            const confidence = document.getElementById('severity-confidence');
+
+            badge.innerText = data.severity;
+            badge.className = `severity-badge severity-${data.severity.toLowerCase()}`;
+            confidence.innerText = `${(data.confidence * 100).toFixed(0)}% confidence`;
+
+            predictionDiv.classList.remove('hidden');
+
+            // Fetch model info
+            fetchModelInfo();
+        } catch (e) {
+            console.error("Severity prediction failed:", e);
+        }
+    }, 800); // Debounce 800ms
+}
+
+// Incident map visualization
+let chartInstance = null;
+
+async function loadIncidentMap() {
+    const severityFilter = document.getElementById('severity-filter').value;
+
+    try {
+        showLoading('Loading incident visualization map...');
+
+        let url = `${API_BASE}/api/visualization/incident-map`;
+        if (severityFilter) {
+            url += `?severity=${severityFilter}`;
+        }
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        hideLoading();
+
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+
+        // Render scatter plot
+        renderIncidentMap(data);
+
+        // Show stats
+        const statsDiv = document.getElementById('viz-stats');
+        statsDiv.innerHTML = `
+            <p><strong>Total Incidents:</strong> ${data.stats.total_incidents}</p>
+            <p><strong>Severity Distribution:</strong> ${Object.entries(data.stats.severity_distribution).map(([k, v]) => `${k}: ${v}`).join(', ')}</p>
+        `;
+
+        // Refresh icons safely
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
+            lucide.createIcons();
+        }
+    } catch (e) {
+        console.error("Visualization failed:", e);
+        hideLoading();
+        alert('Failed to load visualization. Please try again.');
+    }
+}
+
+function renderIncidentMap(data) {
+    const canvas = document.getElementById('incident-map-canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Destroy existing chart
+    if (chartInstance) {
+        chartInstance.destroy();
+    }
+
+    // Prepare data for Chart.js
+    const chartData = data.coordinates.map((coord, i) => ({
+        x: coord[0],
+        y: coord[1],
+        incidentId: data.metadata.incident_ids[i],
+        description: data.metadata.descriptions[i],
+        severity: data.metadata.severities[i],
+        backgroundColor: data.metadata.colors[i]
+    }));
+
+    // Create scatter plot
+    chartInstance = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Incidents',
+                data: chartData,
+                backgroundColor: chartData.map(d => d.backgroundColor),
+                pointRadius: 6,
+                pointHoverRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            const point = context.raw;
+                            return [
+                                `ID: ${point.incidentId}`,
+                                `Severity: ${point.severity}`,
+                                `Description: ${point.description}`
+                            ];
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'UMAP Dimension 1'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'UMAP Dimension 2'
+                    }
+                }
+            }
+        }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     // Initialize with empty state - no auto-analysis
@@ -66,10 +216,14 @@ async function performAnalysis() {
         renderEvidence(data.results);
         renderKBArticles(data.results);
         renderAISolution(solutionData, data.results);
-        checkPatterns(query);
+        // DISABLED: Pattern detection and cluster details
+        // checkPatterns(query);
+
+        // DISABLED: Fetch and display cluster details
+        // fetchClusterDetails(query);
 
         // Initialize lucide icons after all content is rendered
-        if (typeof lucide !== 'undefined') {
+        if (typeof lucide !== 'undefined' && lucide.createIcons) {
             lucide.createIcons();
         }
     } catch (e) {
@@ -78,6 +232,33 @@ async function performAnalysis() {
         alert('Analysis failed. Please try again.');
     }
 }
+
+// Modal control functions
+function openIncidentMapModal() {
+    const modal = document.getElementById('incident-map-modal');
+    modal.classList.add('active');
+
+    // Load the map when modal opens
+    loadIncidentMap();
+
+    // Refresh icons
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
+}
+
+function closeIncidentMapModal() {
+    const modal = document.getElementById('incident-map-modal');
+    modal.classList.remove('active');
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function (event) {
+    const modal = document.getElementById('incident-map-modal');
+    if (event.target === modal) {
+        closeIncidentMapModal();
+    }
+});
 
 function renderEvidence(results) {
     // Filter to show only incidents
@@ -152,14 +333,27 @@ function renderAISolution(solutionData, results) {
     tagsContainer.innerHTML = aiBadge + sourceTags;
 }
 
-function checkPatterns(query) {
-    const lowerQ = query.toLowerCase();
-    let match = null;
+async function checkPatterns(query) {
+    // DISABLED: Pattern detection functionality
+    return;
 
-    // Simple keyword match for demo
-    for (const [key, pat] of Object.entries(MOCK_PATTERNS_MAP)) {
-        if (lowerQ.includes(key)) {
-            match = pat;
+    const lowerQ = query.toLowerCase();
+
+    // Fetch real patterns from HDBSCAN backend
+    const patterns = await fetchPatterns();
+
+    // Find matching pattern based on description similarity
+    let match = null;
+    for (const pattern of patterns) {
+        if (pattern.pattern_id === 'ANOMALIES') continue; // Skip anomalies
+
+        const desc = pattern.description.toLowerCase();
+        // Check if query matches pattern description keywords
+        const keywords = lowerQ.split(' ').filter(w => w.length > 3);
+        const matchCount = keywords.filter(kw => desc.includes(kw)).length;
+
+        if (matchCount > 0) {
+            match = pattern;
             break;
         }
     }
@@ -172,15 +366,33 @@ function checkPatterns(query) {
         patternPanel.classList.remove('hidden');
         autohealPanel.classList.remove('hidden');
 
-        // Populate Data
-        document.getElementById('pattern-id').innerText = match.id;
-        document.getElementById('pattern-desc').innerText = match.desc;
-        document.getElementById('pattern-freq').innerText = `${match.freq} times`;
-        document.getElementById('heal-script').innerText = match.script;
+        // Populate with real HDBSCAN data
+        document.getElementById('pattern-id').innerText = match.pattern_id;
+        document.getElementById('pattern-desc').innerText = match.description;
+        document.getElementById('pattern-freq').innerText = `${match.frequency} times`;
+
+        // Generate auto-heal script based on pattern
+        const script = generateAutoHealScript(match);
+        document.getElementById('heal-script').innerText = script;
     } else {
         // Hide if no pattern
         patternPanel.classList.add('hidden');
         autohealPanel.classList.add('hidden');
+    }
+}
+
+function generateAutoHealScript(pattern) {
+    // Generate appropriate script based on pattern description
+    const desc = pattern.description.toLowerCase();
+
+    if (desc.includes('wireless') || desc.includes('network')) {
+        return 'kubectl restart deployment wireless-gateway -n network';
+    } else if (desc.includes('fios') || desc.includes('fiber')) {
+        return 'systemctl restart fios-service && check-fiber-health.sh';
+    } else if (desc.includes('payment') || desc.includes('gateway')) {
+        return './restart_svc.sh -n payment -r us-east';
+    } else {
+        return `# Auto-heal for ${pattern.pattern_id}\nkubectl restart deployment app-service`;
     }
 }
 
@@ -191,7 +403,9 @@ async function runRemediation() {
 
     btn.disabled = true;
     btn.innerHTML = '<i data-lucide="loader"></i> Running...';
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
 
     // Call backend
     try {
@@ -207,7 +421,9 @@ async function runRemediation() {
             btn.innerHTML = '<i data-lucide="check"></i> Remediated';
             btn.style.background = '#059669';
             status.innerText = `Success: Executed at ${new Date().toLocaleTimeString()}`;
-            lucide.createIcons();
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
         }, 1500);
 
     } catch (e) {
@@ -259,5 +475,80 @@ function hideLoading() {
     if (loader) {
         loader.style.display = 'none';
     }
+}
+
+// Fetch and display cluster details
+async function fetchClusterDetails(query) {
+    // DISABLED: Cluster details functionality
+    return;
+
+    try {
+        const res = await fetch(`${API_BASE}/api/patterns/clusters`);
+        const data = await res.json();
+
+        if (data.clusters && data.clusters.length > 0) {
+            // Find the most relevant cluster based on query
+            const cluster = data.clusters[0]; // For now, show the first cluster
+
+            // Show cluster panel
+            const clusterPanel = document.getElementById('cluster-panel');
+            clusterPanel.classList.remove('hidden');
+
+            // Populate cluster details
+            document.getElementById('cluster-id').innerText = cluster.pattern_id;
+            document.getElementById('cluster-size').innerText = cluster.frequency;
+            document.getElementById('cluster-description').innerText = cluster.description;
+
+            // Populate representative incidents
+            const incidentsList = document.getElementById('cluster-incidents-list');
+            if (cluster.sample_incidents && cluster.sample_incidents.length > 0) {
+                incidentsList.innerHTML = cluster.sample_incidents
+                    .slice(0, 5)
+                    .map(inc => `<li>${inc}</li>`)
+                    .join('');
+            } else {
+                incidentsList.innerHTML = '<li>No sample incidents available</li>';
+            }
+
+            // Refresh icons
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        } else {
+            // Hide cluster panel if no clusters
+            document.getElementById('cluster-panel').classList.add('hidden');
+        }
+    } catch (e) {
+        console.error("Failed to fetch cluster details:", e);
+        document.getElementById('cluster-panel').classList.add('hidden');
+    }
+}
+
+// Fetch and display model info
+async function fetchModelInfo() {
+    try {
+        const res = await fetch(`${API_BASE}/api/predict/model-info`);
+        const data = await res.json();
+
+        if (data.error) {
+            console.error("Model info error:", data.error);
+            return;
+        }
+
+        // Populate model info
+        const accuracy = data.accuracy || data.test_accuracy || 0;
+        document.getElementById('model-accuracy').innerHTML =
+            `<span class="accuracy-badge">${(accuracy * 100).toFixed(1)}%</span>`;
+        document.getElementById('model-samples').innerText = data.training_samples || '-';
+        document.getElementById('model-trained').innerText = data.last_trained || 'Unknown';
+    } catch (e) {
+        console.error("Failed to fetch model info:", e);
+    }
+}
+
+// Toggle model info display
+function toggleModelInfo() {
+    const modelInfo = document.getElementById('model-info');
+    modelInfo.classList.toggle('hidden');
 }
 
