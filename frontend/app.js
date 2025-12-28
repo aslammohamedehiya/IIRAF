@@ -252,32 +252,97 @@ function closeIncidentMapModal() {
     modal.classList.remove('active');
 }
 
+// Incident Detail Modal Functions
+function openIncidentDetailModal(incidentData) {
+    const modal = document.getElementById('incident-detail-modal');
+
+    // Populate modal with incident data
+    document.getElementById('incident-modal-id').innerText = incidentData.id;
+    document.getElementById('incident-modal-description').innerText = incidentData.text;
+    document.getElementById('incident-modal-resolution').innerText = incidentData.resolution;
+    document.getElementById('incident-modal-score').innerText = `${(incidentData.score * 100).toFixed(0)}%`;
+
+    // Show modal
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+
+    // Refresh Lucide icons
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
+}
+
+function closeIncidentDetailModal() {
+    const modal = document.getElementById('incident-detail-modal');
+    modal.classList.remove('active');
+    modal.style.display = 'none';
+}
+
 // Close modal when clicking outside
 document.addEventListener('click', function (event) {
     const modal = document.getElementById('incident-map-modal');
     if (event.target === modal) {
         closeIncidentMapModal();
     }
+
+    const incidentModal = document.getElementById('incident-detail-modal');
+    if (event.target === incidentModal) {
+        closeIncidentDetailModal();
+    }
 });
+
+// Close modal with ESC key
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        closeIncidentMapModal();
+        closeIncidentDetailModal();
+    }
+});
+
 
 function renderEvidence(results) {
     // Filter to show only incidents
     const incidents = results.filter(r => r.type === 'incident');
     const container = document.getElementById('evidence-list');
-    container.innerHTML = incidents.slice(0, 3).map(r => `
-        <div class="evidence-item">
+
+    // Handle empty state
+    if (incidents.length === 0) {
+        container.innerHTML = '<p style="color: #854d0e; font-size: 0.85rem; text-align: center; padding: 20px;">No similar incidents found. Query may be too different from existing incidents.</p>';
+        return;
+    }
+
+    container.innerHTML = incidents.slice(0, 3).map((r, index) => `
+        <div class="evidence-item" data-incident-index="${index}" style="cursor: pointer;">
             <div class="ev-content">
                 <h4>
                     <i data-lucide="file-text" width="16"></i> 
                     ${r.id}: ${r.text.substring(0, 80)}${r.text.length > 80 ? '...' : ''}
                 </h4>
-                <p><strong>Resolution:</strong> ${r.resolution}</p>
+                <p><strong>Resolution:</strong> ${r.resolution.substring(0, 100)}${r.resolution.length > 100 ? '...' : ''}</p>
                 <div style="margin-top:4px; font-size:0.8em; color:#94a3b8">Matches: ${r.text.substring(0, 60)}...</div>
             </div>
             <div class="relevance-score">${(r.score * 100).toFixed(0)}%</div>
         </div>
     `).join('');
+
+    // Store incident data globally for modal access
+    window.incidentData = incidents;
+
+    // Add click event listeners to each evidence item
+    const evidenceItems = container.querySelectorAll('.evidence-item');
+    evidenceItems.forEach((item, index) => {
+        item.addEventListener('click', function () {
+            openIncidentDetailModal(window.incidentData[index]);
+        });
+    });
+
+    // Refresh Lucide icons after rendering
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
+    }
 }
+
+
 
 function renderKBArticles(results) {
     // Filter to show only KB articles

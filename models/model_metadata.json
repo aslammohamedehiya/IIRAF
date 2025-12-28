@@ -1,0 +1,15 @@
+{
+  "last_trained": "2025-12-27 01:07:40",
+  "model_type": "XGBoost Classifier",
+  "num_classes": 4,
+  "classes": [
+    "Low",
+    "Medium",
+    "High",
+    "Critical"
+  ],
+  "accuracy": 0.7551020408163265,
+  "test_accuracy": 0.7551020408163265,
+  "f1_score": 0.7149301825993555,
+  "training_samples": 196
+}

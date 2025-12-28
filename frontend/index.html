@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Incident Triage & Auto-Resolution</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -242,7 +242,46 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <!-- Modal for Incident Details -->
+    <div id="incident-detail-modal" class="incident-detail-modal">
+        <div class="incident-detail-content">
+            <div class="incident-detail-header">
+                <div class="incident-detail-title">
+                    <i data-lucide="file-text"></i>
+                    <span id="incident-modal-id">Incident Details</span>
+                </div>
+                <button class="modal-close" onclick="closeIncidentDetailModal()">×</button>
+            </div>
+            <div class="incident-detail-body">
+                <div class="incident-detail-section">
+                    <div class="incident-detail-label">
+                        <i data-lucide="info"></i>
+                        Description
+                    </div>
+                    <div class="incident-detail-text" id="incident-modal-description">
+                        Loading...
+                    </div>
+                </div>
+                <div class="incident-detail-section">
+                    <div class="incident-detail-label">
+                        <i data-lucide="check-circle"></i>
+                        Resolution
+                    </div>
+                    <div class="incident-detail-text" id="incident-modal-resolution">
+                        Loading...
+                    </div>
+                </div>
+                <div class="incident-detail-footer">
+                    <div class="incident-relevance-badge">
+                        <span class="relevance-label">Relevance Score:</span>
+                        <span class="relevance-value" id="incident-modal-score">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=2.0"></script>
     <script>
         lucide.createIcons();
     </script>

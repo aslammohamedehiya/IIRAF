@@ -47,17 +47,41 @@ class QueryRetriever:
         if info.get('is_stale'):
             print("WARNING: Index may still be stale!")
 
-    def search(self, query: str, k: int = 10) -> List[Dict]:
+    def search(self, query: str, k: int = 10, threshold: float = 12.0) -> List[Dict]:
         """
-        Search for similar incidents/KBs.
+        Search for similar incidents/KBs with similarity threshold.
+        
+        Args:
+            query: Search query text
+            k: Number of results to retrieve from FAISS
+            threshold: Maximum L2 distance (lower = more similar). Results with
+                      distance > threshold are filtered out. Default 12.0.
+        
+        Returns:
+            List of relevant items with similarity scores
         """
         query_embedding = self.model.encode([query])
         distances, indices = self.index.search(query_embedding, k)
         
         results = []
+        filtered_count = 0
+        
         for i, idx in enumerate(indices[0]):
-            if idx == -1: continue
+            if idx == -1: 
+                continue
+            
+            # Filter by similarity threshold
+            distance = float(distances[0][i])
+            if distance > threshold:
+                filtered_count += 1
+                continue  # Skip irrelevant results
+            
             item = self.metadata[idx]
+            
+            # Convert L2 distance to similarity score (0-1, higher is better)
+            # Using inverse: score = 1 / (1 + distance)
+            similarity_score = 1.0 / (1.0 + distance)
+            
             results.append({
                 "id": str(item.get("id", "N/A")),
                 "type": item.get("type", "unknown"),
@@ -65,8 +89,13 @@ class QueryRetriever:
                 "resolution": item.get("resolution", ""),  # For incidents
                 "content": item.get("content", ""),        # For KBs
                 "title": item.get("title", ""),            # For KBs
-                "score": float(distances[0][i])
+                "score": similarity_score,  # Now using normalized score
+                "distance": distance  # Keep raw distance for debugging
             })
+        
+        if filtered_count > 0:
+            print(f"Filtered out {filtered_count} irrelevant results (distance > {threshold})")
+        
         return results
 
     def get_mapped_kb_articles(self, incident_ids: List[str]) -> List[Dict]:

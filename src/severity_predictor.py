@@ -11,7 +11,7 @@ import xgboost as xgb
 
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-from ml_utils import MLUtils
+from .ml_utils import MLUtils
 
 class SeverityPredictor:
     """Predict incident severity using XGBoost classifier"""
@@ -112,8 +112,11 @@ class SeverityPredictor:
         
         self.is_trained = True
         
-        # Save model
-        self.save_model()
+        # Add training sample count to results
+        results['training_samples'] = X_train.shape[0]  # Use shape[0] for sparse matrices
+        
+        # Save model with metadata
+        self.save_model(training_results=results)
         
         return results
     
@@ -193,8 +196,8 @@ class SeverityPredictor:
         
         return results
     
-    def save_model(self):
-        """Save trained model and vectorizer to disk"""
+    def save_model(self, training_results=None):
+        """Save trained model and vectorizer to disk with metadata"""
         if not self.is_trained:
             print("[WARNING] No trained model to save")
             return
@@ -210,7 +213,30 @@ class SeverityPredictor:
         with open(self.vectorizer_path, 'wb') as f:
             pickle.dump(self.vectorizer, f)
         
-        print(f"[OK] Model saved to {self.model_path}")
+        # Save metadata
+        import json
+        from datetime import datetime
+        
+        metadata_path = os.path.join(self.model_dir, "model_metadata.json")
+        metadata = {
+            "last_trained": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "model_type": "XGBoost Classifier",
+            "num_classes": 4,
+            "classes": list(self.label_decoder.values())
+        }
+        
+        if training_results:
+            metadata.update({
+                "accuracy": training_results.get('accuracy', 0),
+                "test_accuracy": training_results.get('accuracy', 0),
+                "f1_score": training_results.get('f1_score', 0),
+                "training_samples": training_results.get('training_samples', 0)
+            })
+        
+        with open(metadata_path, 'w') as f:
+            json.dump(metadata, f, indent=2)
+        
+        print(f"[OK] Model and metadata saved to {self.model_path}")
     
     def load_model(self):
         """Load trained model and vectorizer from disk"""
@@ -233,7 +259,36 @@ class SeverityPredictor:
     def get_model_info(self):
         """Get information about the trained model"""
         if not self.is_trained:
-            return {"status": "not_trained"}
+            return {
+                "status": "not_trained",
+                "accuracy": 0,
+                "training_samples": 0,
+                "last_trained": "Unknown"
+            }
+        
+        # Try to load model metadata file
+        import os
+        import json
+        from datetime import datetime
+        
+        metadata_path = os.path.join(self.model_dir, "model_metadata.json")
+        metadata = {}
+        
+        if os.path.exists(metadata_path):
+            try:
+                with open(metadata_path, 'r') as f:
+                    metadata = json.load(f)
+            except Exception as e:
+                print(f"Warning: Could not load model metadata: {e}")
+        
+        # Get model file modification time as fallback for last_trained
+        last_trained = "Unknown"
+        if os.path.exists(self.model_path):
+            try:
+                mtime = os.path.getmtime(self.model_path)
+                last_trained = datetime.fromtimestamp(mtime).strftime("%Y-%m-%d %H:%M:%S")
+            except:
+                pass
         
         return {
             "status": "trained",
@@ -241,8 +296,13 @@ class SeverityPredictor:
             "num_classes": 4,
             "classes": list(self.label_decoder.values()),
             "num_features": self.vectorizer.max_features if self.vectorizer else 0,
-            "model_path": self.model_path
+            "model_path": self.model_path,
+            "accuracy": metadata.get("accuracy", 0),
+            "test_accuracy": metadata.get("test_accuracy", 0),
+            "training_samples": metadata.get("training_samples", 0),
+            "last_trained": metadata.get("last_trained", last_trained)
         }
+
 
 if __name__ == "__main__":
     print("="*60)
